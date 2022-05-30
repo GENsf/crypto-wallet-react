@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import WalletPage from './pages/WalletPage';
+import ConverterPage from './pages/ConverterPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+import { setCurrency, setHistory } from './store/slices/cryptoCurrencySlice';
+import useGetCurr from './hooks/useGetCurr';
+import useGetHistory from './hooks/useGetHistory';
 
 function App() {
+  const dispatch = useDispatch();
+
+  const currency = useGetCurr();
+  const history = useGetHistory();
+
+  useEffect(() => {
+    dispatch(setCurrency({currency}));
+    dispatch(setHistory({history}));
+  }, [currency, history, dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<WalletPage />} />
+        <Route path='/converter' element={<ConverterPage />} />
+        <Route path='/*' element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
 
