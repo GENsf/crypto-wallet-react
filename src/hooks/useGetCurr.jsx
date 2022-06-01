@@ -16,7 +16,6 @@ const useGetCurr = () => {
           setGetCurrency({
             BTC: response.data.BTC.USD,
             ETH: response.data.ETH.USD,
-            USD: 1,
           });
       });
     } catch (error) {

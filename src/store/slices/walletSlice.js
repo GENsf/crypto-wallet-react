@@ -1,8 +1,9 @@
 import { createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-  BTCValue: 0,
-  ETHValue: 0,
+  BTC: 34.23,
+  ETH: 214.34,
+  USD: 64235.2,
 };
 
 const walletSlice = createSlice({
@@ -10,7 +11,7 @@ const walletSlice = createSlice({
   initialState,
   reducers: {
     increment: (state, action) => {
-
+      state = action.payload;
     },
     decrement: (state, action) => {
 

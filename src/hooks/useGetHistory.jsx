@@ -13,9 +13,9 @@ const useGetHistory = () => {
   };
 
   useEffect(() => {
-    setDays([]);
     const BTCUrl = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=13';
     const ETHUrl = 'https://min-api.cryptocompare.com/data/v2/histoday?fsym=ETH&tsym=USD&limit=13';
+    setDays([]);
     try {
       axios.get(BTCUrl).then((response) => {
         if (response.data.Response !== 'Error') {

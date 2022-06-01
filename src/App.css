@@ -43,22 +43,169 @@ a {
   text-shadow: 0px 0px 6px #ffffff70;
   transition: all .2s;
 }
+input {
+  padding-left: 5px;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  font-size: 20px;
+}
+input:focus {
+  border: 2px solid #333333;
+  outline: none;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 input[type='number'] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-.converter-page a {
-  padding: 5px 10px;
-  color: #333333;
-  border: 2px solid #333333;
+main .btn {
+  padding: 6px 10px;
+  border: 0;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: 600;
+}
+
+main .btn-main {
+  color: #ffffff;
+  background-color: #333333;
+}
+
+main .btn-main:hover {
+  background-color: #333333d6;
+}
+
+main .btn-main:active {
+  background-color: #333333d6;
+  outline: 2px solid #333333d6;
+}
+
+main .btn-border {
+  color: #333333;
+  border: 2px solid #333333;
+}
+
+main .btn-border:hover {
+  background-color: #f5f5f5;
+}
+
+main .btn-border:active {
+  background-color: #eeeeee;
+}
+
+main .btn.converter {
+  max-width: 100px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.wallet-content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.wallet-content .bar__card,
+.wallet-content .balance__card {
+  border-radius: 15px;
+  padding: 25px 30px;
+  box-shadow: 7px 5px 9px #D5D5D5;
+}
+.wallet-content .bar__card.btc {
+  background: #EDF2CA;
+}
+.wallet-content .bar__card.eth {
+  background: #CAF2CE;
+}
+
+.wallet-content .balance__card {
+  border: 1px solid #A9A9A9;
+}
+
+.wallet-content .bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.wallet-content .bar__card {
+  padding: 18px;
+  text-align: center;
+}
+.bar__row {
+  font-size: 25px;
+}
+
+.bar__arrow-up {
+  color: #19B200;
+}
+.bar__arrow-down {
+  color: #D23F3F;
+}
+
+.bar__coin-val {
+  font-weight: 600;
+}
+
+.usd-symbol {
+  color: #A0A0A0;
+  font-weight: 400;
+}
+
+.wallet-content .balance {
+  margin-bottom: 30px;
+}
+
+.wallet-content .balance__card {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wallet-content .balance-card:last-child {
+  margin-bottom: 0;
+}
+.wallet-content .balance__card .balance__info {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.wallet-content .balance__card .balance__coin-name {
+  font-weight: 400;
+  color: #555555;
+}
+
+.wallet-content .balance__card .balance__coin-name.BTC{
+  color: #B09F00;
+}
+.wallet-content .balance__card .balance__coin-name.ETH{
+  color: #3BBB38;
+}
+.wallet-content .balance__card .balance__coin-name.USD{
+  color: #4B55AC;
+}
+
+.wallet-content .balance__card .balance__send {
+  cursor: pointer;
+}
+
+.wallet-content .summary {
+  margin: 30px;
+  text-align: center;
+}
+.wallet-content .summary__diagram {
+  width: 300px;
+  margin: 0 auto 30px auto;
+}
+
+.wallet-content .summary__total {
+  font-size: 34px;
   font-weight: 600;
 }
 
@@ -85,7 +232,7 @@ input[type='number'] {
 	}
 }
 
-.converter-page .container section {
+.converter-page .converter-content {
   display: flex;
   justify-content: space-evenly;
 }
@@ -98,36 +245,52 @@ input[type='number'] {
   width: 40%;
 }
 
-.exchange {
+.converter {
   width: 30%;
   text-align: center;
 }
 
-.exchange-inputs {
+.converter-inputs {
   display: flex;
   justify-content: center;
 }
-.exchange-inputs label {
+.converter-inputs label {
   margin-top: 10px;
   display: block;
+  text-align: left;
   font-size: 18px;
-  color: #A0A0A0;
   font-weight: 600;
+  color: #555;
 }
-.exchange-inputs div:first-child label {
+.converter-inputs div:first-child label {
   text-align: right;
 }
-.exchange-inputs input {
-  width: 150px;
+.converter-inputs input {
+  width: 200px;
   height: 30px;
-  font-size: 20px;
 }
-.exchange-inputs input:disabled {
+.converter-inputs input:disabled {
   color: #000000;
   cursor: text;
 }
-.exchange-inputs p {
+.converter-inputs p {
   margin: 27px 20px 0 20px;
   font-size: 30px;
   color: #333333;
+}
+
+.converter-inputs .arrow {
+  animation: arrow 1s linear infinite;
+}
+
+@keyframes arrow {
+	0% {
+		transform: translate(-5px, 0);
+	}
+  50% {
+    transform: translate(5px, 0);
+  }
+	100% {
+    transform: translate(-5px, 0);
+	}
 }

@@ -10,6 +10,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import { setCurrency, setHistory } from './store/slices/cryptoCurrencySlice';
 import useGetCurr from './hooks/useGetCurr';
 import useGetHistory from './hooks/useGetHistory';
+import { persistor } from './store';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <button style={{position: 'absolute'}} onClick={() => persistor.purge()}>purge</button>
       <Routes>
         <Route path='/' element={<WalletPage />} />
         <Route path='/converter' element={<ConverterPage />} />

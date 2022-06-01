@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 
 const ExchangeInputs = ({converterCoins, currency}) => {
-  const [oneInput, setOneInput] = useState(0);
-  const [twoInput, setTwoInput] = useState(0);
+  const [oneInput, setOneInput] = useState();
+  const [twoInput, setTwoInput] = useState();
   const [oneDisable, setOneDisable] = useState(false);
   const [twoDisable, setTwoDisable] = useState(false);
 
   const inputOneChange = (valueOne) => {
-    valueOne = valueOne.trim().replace(/[^\d]/g, '');
+    var valueTwo = '';
+    valueOne = valueOne.trim().replace(/[^.\d]/g, '');
     valueOne ? setTwoDisable(true) : setTwoDisable(false);
-    const valueTwo = parseFloat(exchangeOne(valueOne).toFixed(2));
-    setOneInput(valueOne);
-    setTwoInput(valueTwo);
+
+    if (valueOne) {
+      valueTwo = parseFloat(exchangeOne(valueOne).toFixed(2));
+    }
+
+    setOneInput(valueOne.toLocaleString());
+    setTwoInput(valueTwo.toLocaleString());
   };
+
   const inputTwoChange = (valueTwo) => {
-    valueTwo = valueTwo.trim().replace(/[^\d]/g, '');
+    var valueOne = '';
+    valueTwo = valueTwo.trim().replace(/[^.\d]/g, '');
     valueTwo ? setOneDisable(true) : setOneDisable(false);
-    const valueOne = parseFloat(exchangeTwo(valueTwo).toFixed(2))
-    setOneInput(valueOne);
-    setTwoInput(valueTwo);
+
+    if (valueTwo) {
+      valueOne = parseFloat(exchangeTwo(valueTwo).toFixed(2));
+    }
+
+    setOneInput(valueOne.toLocaleString());
+    setTwoInput(valueTwo.toLocaleString());
   };
 
   const exchangeOne = (value) => {
@@ -30,7 +41,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'USD':
         return value * currency.BTC; //BTC to USD
       default:
-        return 0;
+        return;
       }
     case 'ETH':
       switch (converterCoins.twoCoin) {
@@ -39,7 +50,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'USD':
         return value * currency.ETH; //ETH to USD
       default:
-        return 0;
+        return;
       }
     case 'USD':
       switch (converterCoins.twoCoin) {
@@ -48,14 +59,17 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'ETH':
         return value / currency.ETH; //USD to ETH
       default:
-        return 0;
+        return;
       }
     default:
-      return 0;
+      return;
     }
   };
 
   const exchangeTwo = (value) => {
+    if (!value) {
+      return;
+    }
     switch (converterCoins.twoCoin) {
     case 'BTC':
       switch (converterCoins.oneCoin) {
@@ -64,7 +78,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'USD':
         return value * currency.BTC; //BTC to USD
       default:
-        return 0;
+        return;
       }
     case 'ETH':
       switch (converterCoins.oneCoin) {
@@ -73,7 +87,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'USD':
         return value * currency.ETH; //ETH to USD
       default:
-        return 0;
+        return;
       }
     case 'USD':
       switch (converterCoins.oneCoin) {
@@ -82,44 +96,44 @@ const ExchangeInputs = ({converterCoins, currency}) => {
       case 'ETH':
         return value / currency.ETH; //USD to ETH
       default:
-        return 0;
+        return;
       }
     default:
-      return 0;
+      return;
     }
   };
 
   const changedArrows = () => {
     if (twoDisable) {
-      return <p>&rarr;</p>;
+      return <p className='arrow'>&rarr;</p>;
     } else
     if (oneDisable) {
-      return <p>&larr;</p>;
+      return <p className='arrow'>&larr;</p>;
     } else {
       return <p>&harr;</p>;
     }
   };
 
   return (
-    <div className='exchange-inputs'>
+    <div className='converter-inputs'>
       <div>
-        <label>{converterCoins.oneCoin}</label>
+        <label style={twoDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.oneCoin}</label>
         <input
           type="text"
-          value={oneInput? oneInput : ''}
+          value={oneInput ? oneInput : ''}
           onChange={(event) => inputOneChange(event.target.value)}
-          placeholder="0"
+          placeholder=""
           disabled={oneDisable}
         />
       </div>
       {changedArrows()}
       <div>
-        <label>{converterCoins.twoCoin}</label>
+        <label style={oneDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.twoCoin}</label>
         <input
           type="text"
-          value={twoInput? twoInput : ''}
+          value={twoInput ? twoInput : ''}
           onChange={(event) => inputTwoChange(event.target.value)}
-          placeholder="0"
+          placeholder=""
           disabled={twoDisable}
         />
       </div>

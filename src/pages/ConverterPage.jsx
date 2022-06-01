@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Header from '../components/Header';
-import ConverterInputs from '../components/ConverterInputs';
-import ETHHistoryChart from '../components/ETHHistoryChart';
-import BTCHistoryChart from '../components/BTCHistoryChart';
+import ConverterInputs from '../components/converter/ConverterInputs';
+import ETHHistoryChart from '../components/converter/ETHHistoryChart';
+import BTCHistoryChart from '../components/converter/BTCHistoryChart';
 
 const ConverterPage = () => {
 
@@ -37,14 +37,14 @@ const ConverterPage = () => {
       <Header title='converter'/>
       <main className="converter-page">
         <section className='container'>
-          <Link to='/'>&larr; Back</Link>
-          {preloader() ? preloader() : <section>
+          <Link to='/' className='btn btn-border'>&larr; Back</Link>
+          {preloader() ? preloader() : <section className='converter-content'>
             <div className='history-charts'>
               <h2>Two Weeks History</h2>
-              <ETHHistoryChart />
               <BTCHistoryChart />
+              <ETHHistoryChart />
             </div>
-            <div className='exchange'>
+            <div className='converter'>
               <h2>Converter</h2>
               <ConverterInputs converterCoins={BTCtoUSDConvert} currency={currency} />
               <ConverterInputs converterCoins={ETHtoUSDConvert} currency={currency}/>

@@ -2,9 +2,9 @@ import { createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   value: {
-    BTCval: 0,
-    ETHval: 0,
-    USDval: 1,
+    BTC: 0,
+    ETH: 0,
+    USD: 1,
   },
   history: {
     BTCHistory: [],
