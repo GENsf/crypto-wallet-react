@@ -23,14 +23,24 @@ function App() {
     dispatch(setHistory({history}));
   }, [currency, history, dispatch]);
 
+  const preloader = () => {
+    if (currency.BTC && currency.ETH) {
+      return false;
+    } else {
+      return <span className='loader'></span>;
+    }
+  };
+
   return (
     <>
       <button style={{position: 'absolute'}} onClick={() => persistor.purge()}>purge</button>
-      <Routes>
-        <Route path='/' element={<WalletPage />} />
-        <Route path='/converter' element={<ConverterPage />} />
-        <Route path='/*' element={<NotFoundPage />} />
-      </Routes>
+      {preloader() ? preloader() :
+        <Routes>
+          <Route path='/' element={<WalletPage />} />
+          <Route path='/converter' element={<ConverterPage />} />
+          <Route path='/*' element={<NotFoundPage />} />
+        </Routes>
+      }
     </>
   );
 }

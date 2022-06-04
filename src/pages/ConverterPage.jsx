@@ -11,14 +11,6 @@ const ConverterPage = () => {
 
   const currency = useSelector((state) => state.currency.value);
 
-  const preloader = () => {
-    if (currency.BTC) {
-      return false;
-    } else {
-      return <span className='loader'></span>;
-    }
-  };
-
   const BTCtoETHConvert = {
     oneCoin: 'BTC',
     twoCoin: 'ETH',
@@ -38,9 +30,9 @@ const ConverterPage = () => {
       <main className="converter-page">
         <section className='container'>
           <Link to='/' className='btn btn-border'>&larr; Back</Link>
-          {preloader() ? preloader() : <section className='converter-content'>
+          <section className='converter-content'>
             <div className='history-charts'>
-              <h2>Two Weeks History</h2>
+              <h2>Price Graph (14d)</h2>
               <BTCHistoryChart />
               <ETHHistoryChart />
             </div>
@@ -51,7 +43,6 @@ const ConverterPage = () => {
               <ConverterInputs converterCoins={BTCtoETHConvert} currency={currency}/>
             </div>
           </section>
-          }
         </section>
       </main>
     </>

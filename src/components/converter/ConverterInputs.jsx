@@ -12,7 +12,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
     valueOne ? setTwoDisable(true) : setTwoDisable(false);
 
     if (valueOne) {
-      valueTwo = parseFloat(exchangeOne(valueOne).toFixed(2));
+      valueTwo = parseFloat(Number(exchangeOne(valueOne)).toFixed(2));
     }
 
     setOneInput(valueOne.toLocaleString());
@@ -25,7 +25,7 @@ const ExchangeInputs = ({converterCoins, currency}) => {
     valueTwo ? setOneDisable(true) : setOneDisable(false);
 
     if (valueTwo) {
-      valueOne = parseFloat(exchangeTwo(valueTwo).toFixed(2));
+      valueOne = parseFloat(Number(exchangeTwo(valueTwo)).toFixed(2));
     }
 
     setOneInput(valueOne.toLocaleString());

@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import CoinBar from '../components/wallet/CoinBar';
 import BalanceList from '../components/wallet/BalanceList';
 import SumWallet from '../components/wallet/SumWallet';
+import SendModal from '../components/wallet/SendModal';
 
 const WalletPage = () => {
   return (
@@ -20,6 +21,7 @@ const WalletPage = () => {
             <Link to='/converter' className='btn btn-main converter'>Converter</Link>
             <BalanceList />
             <SumWallet />
+            <SendModal />
           </section>
         </section>
       </main>

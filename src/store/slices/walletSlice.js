@@ -10,14 +10,14 @@ const walletSlice = createSlice({
   name: 'wallet',
   initialState,
   reducers: {
-    increment: (state, action) => {
-      state = action.payload;
-    },
-    decrement: (state, action) => {
-
+    sendAction: (state, action) => {
+      state[action.payload.from] -= action.payload.fromValue;
+      if (action.payload.to !== 'other') {
+        state[action.payload.to] += action.payload.toValue;
+      }
     },
   },
 });
 
-export const { increment, decrement } = walletSlice.actions;
+export const { sendAction } = walletSlice.actions;
 export default walletSlice.reducer;

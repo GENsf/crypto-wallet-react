@@ -13,16 +13,18 @@ import storage from 'redux-persist/lib/storage';
 
 import cryptoCurrencyReducer from './slices/cryptoCurrencySlice';
 import walletReducer from './slices/walletSlice';
+import modalReducer from './slices/modalSlice';
 
 const rootReducer = combineReducers({
   currency: cryptoCurrencyReducer,
   wallet: walletReducer,
+  modal: modalReducer,
 });
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['currency'],
+  blacklist: ['currency', 'modal'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

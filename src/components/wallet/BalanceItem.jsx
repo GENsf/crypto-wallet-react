@@ -1,17 +1,26 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleModal } from '../../store/slices/modalSlice';
 
 const BalanceItem = ({coin}) => {
+  const dispatch = useDispatch();
+
   const coinName = coin[0];
-  const coinVal = coin[1].toLocaleString();
+  const coinVal = coin[1];
 
   const sendClick = () => {
-    console.log('Send');
+    dispatch(
+      toggleModal({
+        show: true,
+        coin: coinName,
+      })
+    );
   };
 
   return (
     <div className="balance__card">
       <span className='balance__info'>
-        {coinVal} <span className={'balance__coin-name ' + coinName}>
+        {parseFloat(Number(coinVal).toFixed(2)).toLocaleString()} <span className={'balance__coin-name ' + coinName}>
           {coinName}
         </span>
       </span>
