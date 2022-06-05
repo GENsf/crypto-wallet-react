@@ -29,10 +29,18 @@ const WalletChart = () => {
   const wallet = useSelector((state) => state.wallet);
   const currency = useSelector((state) => state.currency.value);
 
-  const valuableBTC = wallet.BTC * currency.BTC;
-  const valuableETH = wallet.ETH * currency.ETH;
-  const valuableAll = valuableBTC + valuableETH + wallet.USD;
-  const valuable = parseFloat(valuableAll.toFixed(2));
+  const valuableAll = parseFloat(((wallet.BTC * currency.BTC) + (wallet.ETH * currency.ETH) + wallet.USD).toFixed(2));
+
+  const percentBTC = Math.round(100 / (valuableAll / (wallet.BTC * currency.BTC)));
+  const percentETH = Math.round(100 / (valuableAll / (wallet.ETH * currency.ETH)));
+  const percentUSD = Math.round(100 / (valuableAll / wallet.USD));
+
+  const percentValue = [percentBTC, percentETH, percentUSD];
+
+  if (percentValue.reduce((prev, curr) => prev + curr, 0) !== 100) {
+    const indexMin = percentValue.indexOf(Math.min.apply(null, percentValue));
+    percentValue[indexMin] += 1;
+  }
 
   const options = {
     responsive: true,
@@ -40,13 +48,13 @@ const WalletChart = () => {
 
   const data = {
     datasets: [{
-      data: [valuableBTC, valuableETH, wallet.USD],
+      data: percentValue,
       backgroundColor: ['#B09F00', '#3BBB38', '#4B55AC'],
     }],
     labels: [
-      'BTC',
-      'ETH',
-      'USD',
+      'BTC %',
+      'ETH %',
+      'USD %',
     ],
   };
 
@@ -55,7 +63,7 @@ const WalletChart = () => {
       <div className='summary__diagram'>
         <Doughnut options={options} data={data}/>
       </div>
-      <span className='summary__total'>{valuable.toLocaleString()} <span className='usd-symbol'>$</span></span>
+      <span className='summary__total'>{valuableAll.toLocaleString()} <span className='usd-symbol'>$</span></span>
     </div>
   );
 };

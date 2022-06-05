@@ -31,17 +31,17 @@ const ConverterPage = () => {
         <section className='container'>
           <Link to='/' className='btn btn-border'>&larr; Back</Link>
           <section className='converter-content'>
+            <h2>Price Graph (14d)</h2>
             <div className='history-charts'>
-              <h2>Price Graph (14d)</h2>
               <BTCHistoryChart />
               <ETHHistoryChart />
             </div>
-            <div className='converter'>
+            <section className='converter-div'>
               <h2>Converter</h2>
               <ConverterInputs converterCoins={BTCtoUSDConvert} currency={currency} />
               <ConverterInputs converterCoins={ETHtoUSDConvert} currency={currency}/>
               <ConverterInputs converterCoins={BTCtoETHConvert} currency={currency}/>
-            </div>
+            </section>
           </section>
         </section>
       </main>

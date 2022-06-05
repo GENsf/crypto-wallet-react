@@ -105,39 +105,42 @@ const ExchangeInputs = ({converterCoins, currency}) => {
 
   const changedArrows = () => {
     if (twoDisable) {
-      return <p className='arrow'>&rarr;</p>;
+      return <p className='arrow right'>&rarr;</p>;
     } else
     if (oneDisable) {
-      return <p className='arrow'>&larr;</p>;
+      return <p className='arrow left'>&larr;</p>;
     } else {
-      return <p>&harr;</p>;
+      return <p className='arrow'>&harr;</p>;
     }
   };
 
   return (
-    <div className='converter-inputs'>
-      <div>
-        <label style={twoDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.oneCoin}</label>
-        <input
-          type="text"
-          value={oneInput ? oneInput : ''}
-          onChange={(event) => inputOneChange(event.target.value)}
-          placeholder=""
-          disabled={oneDisable}
-        />
+    <>
+      <div className='converter-inputs'>
+        <div>
+          <label style={twoDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.oneCoin}</label>
+          <input
+            type="text"
+            value={oneInput ? oneInput : ''}
+            onChange={(event) => inputOneChange(event.target.value)}
+            placeholder=""
+            disabled={oneDisable}
+          />
+        </div>
+        {changedArrows()}
+        <div>
+          <label style={oneDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.twoCoin}</label>
+          <input
+            type="text"
+            value={twoInput ? twoInput : ''}
+            onChange={(event) => inputTwoChange(event.target.value)}
+            placeholder=""
+            disabled={twoDisable}
+          />
+        </div>
       </div>
-      {changedArrows()}
-      <div>
-        <label style={oneDisable ? {color: '#000000'} : {color: '#555555'}}>{converterCoins.twoCoin}</label>
-        <input
-          type="text"
-          value={twoInput ? twoInput : ''}
-          onChange={(event) => inputTwoChange(event.target.value)}
-          placeholder=""
-          disabled={twoDisable}
-        />
-      </div>
-    </div>
+      <hr />
+    </>
   );
 };
 

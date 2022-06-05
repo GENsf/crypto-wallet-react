@@ -127,9 +127,9 @@ input[type='number'] {
 }
 
 .btn.converter {
-  max-width: 100px;
-  margin-bottom: 10px;
-  display: block;
+  margin: 10px 0;
+  padding: 9px 15px;
+  text-align: center;
 }
 
 .BTC {
@@ -143,7 +143,7 @@ input[type='number'] {
 }
 
 .wallet-content {
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -167,7 +167,8 @@ input[type='number'] {
 .wallet-content .bar {
   margin-bottom: 20px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -176,7 +177,7 @@ input[type='number'] {
   text-align: center;
 }
 .bar__row {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .bar__arrow-up {
@@ -229,11 +230,12 @@ input[type='number'] {
 }
 
 .wallet-content .summary {
-  margin: 30px;
+  margin-top: 30px;
   text-align: center;
 }
 .wallet-content .summary__diagram {
-  width: 300px;
+  width: 70%;
+  max-width: 300px;
   margin: 0 auto 30px auto;
 }
 
@@ -350,38 +352,47 @@ input[type='number'] {
 }
 
 .converter-page .converter-content {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.history-charts h2 {
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
+  padding-top: 20px;
 }
 
-.history-charts {
-  width: 40%;
+.converter-page .history-charts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 70px;
 }
 
-.converter {
-  width: 30%;
+.converter-page .chart {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.converter-div {
   text-align: center;
 }
 
 .converter-inputs {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .converter-inputs label {
+  width: 35px;
   margin-top: 10px;
   display: block;
-  text-align: left;
   font-size: 18px;
   font-weight: 600;
   color: #555;
+  position: relative;
+  top: 27px;
+  left: 160px;
 }
-.converter-inputs div:first-child label {
-  text-align: right;
-}
+
 .converter-inputs input {
   width: 200px;
   height: 30px;
@@ -396,7 +407,8 @@ input[type='number'] {
   color: #333333;
 }
 
-.converter-inputs .arrow {
+.converter-inputs .arrow.right,
+.converter-inputs .arrow.left {
   animation: arrow 1s linear infinite;
 }
 
@@ -410,4 +422,67 @@ input[type='number'] {
 	100% {
     transform: translate(-5px, 0);
 	}
+}
+
+.converter-div hr {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 90%;
+  }
+  .btn {
+    font-size: 13px;
+  }
+  .converter-content,
+  .wallet-content {
+    width: 90%;
+  }
+  .wallet-content .bar__row {
+    font-size: 15px;
+  }
+  .wallet-content .bar__card {
+    padding: 10px 10px;
+    width: 100%;
+  }
+  .wallet-content .balance__card {
+    padding: 15px 15px;
+  }
+  .wallet-content .balance__card .balance__info {
+    font-size: 20px;
+  }
+  .wallet-content .summary__total {
+    font-size: 20px;
+  }
+  .wallet-content .summary__diagram {
+    width: 100%;
+  }
+  .converter-content .history-charts {
+    width: 100%;
+  }
+
+  .converter-inputs {
+    margin-bottom: 20px;
+  }
+
+  .converter-inputs div {
+    width: 90%;
+  }
+  .converter-inputs input {
+    width: 100%;
+  }
+  .converter-inputs label {
+    margin-top: 0;
+    float: right;
+    left: -5px;
+  }
+  .converter-content .arrow {
+    display: none;
+  }
+  .converter-div hr {
+    display: block;
+    border-color: #000;
+    margin: 0 auto;
+  }
 }
