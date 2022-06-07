@@ -25,7 +25,6 @@ ChartJS.register(
 );
 
 const WalletChart = () => {
-
   const wallet = useSelector((state) => state.wallet);
   const currency = useSelector((state) => state.currency.value);
 

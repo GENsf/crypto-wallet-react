@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
 import { toggleModal } from '../../store/slices/modalSlice';
 
 const BalanceItem = ({coin}) => {

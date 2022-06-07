@@ -10,7 +10,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import { setCurrency, setHistory } from './store/slices/cryptoCurrencySlice';
 import useGetCurr from './hooks/useGetCurr';
 import useGetHistory from './hooks/useGetHistory';
-import { persistor } from './store';
+// import { persistor } from './store';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <button style={{position: 'absolute'}} onClick={() => persistor.purge()}>purge</button>
+      {/* <button style={{position: 'absolute'}} onClick={() => persistor.purge()}>purge</button> */}
       {preloader() ? preloader() :
         <Routes>
           <Route path='/' element={<WalletPage />} />

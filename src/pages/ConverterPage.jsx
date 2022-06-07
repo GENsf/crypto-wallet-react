@@ -8,7 +8,6 @@ import ETHHistoryChart from '../components/converter/ETHHistoryChart';
 import BTCHistoryChart from '../components/converter/BTCHistoryChart';
 
 const ConverterPage = () => {
-
   const currency = useSelector((state) => state.currency.value);
 
   const BTCtoETHConvert = {

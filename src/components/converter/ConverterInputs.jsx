@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ExchangeInputs = ({converterCoins, currency}) => {
+const ConverterInputs = ({converterCoins, currency}) => {
   const [oneInput, setOneInput] = useState();
   const [twoInput, setTwoInput] = useState();
   const [oneDisable, setOneDisable] = useState(false);
@@ -144,4 +144,4 @@ const ExchangeInputs = ({converterCoins, currency}) => {
   );
 };
 
-export default ExchangeInputs;
+export default ConverterInputs;

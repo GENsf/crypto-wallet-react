@@ -43,6 +43,9 @@ a {
   width: 80%;
   margin: 0 auto;
 }
+
+/* --- HEADER --- */
+
 .header {
   width: 100%;
   height: 100px;
@@ -71,6 +74,9 @@ a {
   text-shadow: 0px 0px 6px #ffffff70;
   transition: all .2s;
 }
+
+/* --- INPUTS --- */
+
 input {
   padding-left: 5px;
   border: 1px solid #333333;
@@ -91,12 +97,15 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+/* --- BUTTONS --- */
+
 .btn {
   padding: 6px 10px;
   border: 0;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .btn-main {
@@ -132,6 +141,8 @@ input[type='number'] {
   text-align: center;
 }
 
+/* --- COINS COLOR --- */
+
 .BTC {
   color: #B09F00;
 }
@@ -141,6 +152,8 @@ input[type='number'] {
 .USD {
   color: #4B55AC;
 }
+
+/* --- WALLET PAGE --- */
 
 .wallet-content {
   width: 75%;
@@ -176,6 +189,9 @@ input[type='number'] {
   padding: 18px;
   text-align: center;
 }
+
+/* --- TOP BARS --- */
+
 .bar__row {
   font-size: 20px;
 }
@@ -196,6 +212,8 @@ input[type='number'] {
   font-weight: 400;
 }
 
+/* --- BALANCE LIST --- */
+
 .wallet-content .balance {
   margin-bottom: 30px;
 }
@@ -210,7 +228,7 @@ input[type='number'] {
 .wallet-content .balance-card:last-child {
   margin-bottom: 0;
 }
-.wallet-content .balance__card .balance__info {
+.wallet-content .balance__info {
   font-size: 24px;
   font-weight: 600;
 }
@@ -220,14 +238,15 @@ input[type='number'] {
 }
 
 .wallet-content .balance__send {
-  cursor: pointer;
   float: right;
 }
 
-.wallet-content .balance__send:disabled {
+.wallet-content .send-btn:disabled {
   background-color: #777777;
   cursor: default;
 }
+
+/* --- SUMMARY INFO --- */
 
 .wallet-content .summary {
   margin-top: 30px;
@@ -244,6 +263,8 @@ input[type='number'] {
   font-weight: 600;
 }
 
+/* --- SEND MODAL --- */
+
 .send-modal__background {
   position: absolute;
   top: 0;
@@ -253,7 +274,7 @@ input[type='number'] {
   background-color: #00000090;
 }
 .send-modal__content {
-  width: 50%;
+  width: 60%;
   margin: 150px auto 0 auto;
   padding: 20px 30px;
   background-color: #ffffff;
@@ -274,17 +295,40 @@ input[type='number'] {
 }
 .send-modal__subtitle.error {
   color: red;
+  font-weight: 600;
+  animation: subtitle-error .2s;
 }
+@keyframes subtitle-error {
+  0% {
+    transform: translate(5px, 0);
+  }
+  25% {
+    transform: translate(-5px, 0);
+  }
+  50% {
+    transform: translate(5px, 0);
+  }
+  75% {
+    transform: translate(-5px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* --- SEND MODAL BALANCE LIST --- */
+
 .send-modal__balance-list {
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 20px;
   margin-bottom: 30px;
 }
+
 .send-modal__balance-list .balance__card {
-  width: auto;
-  max-width: 250px;
-  padding: 10px 20px;
+  width: 200px;
+  margin: 0 auto 20px auto;
+  padding: 10px 15px;
   border: 1px solid #A9A9A9;
   cursor: pointer;
 }
@@ -327,29 +371,34 @@ input[type='number'] {
 .send-modal__balance-list .balance__info {
   margin: auto;
   color: #333333;
+  font-size: 20px;
 }
+
+/* --- SEND MODAL INPUT --- */
 
 .send-modal__content .send-inputs {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   font-weight: 600;
-  text-align: left;
-}
-.send-modal__content .send-inputs__title {
-  font-size: 20px;
-  margin-right: 10px;
+  white-space: nowrap;
 }
 .send-modal__content .send-inputs__subtitle {
   color: #555555;
 }
 
 .send-modal__content .send-inputs__input {
-  height: 30px;
+  height: 40px;
   font-size: 18px;
 }
 
 .send-modal__content .send-inputs__input.error {
   border: 2px solid red;
 }
+
+/* --- CONVERTER PAGE --- */
 
 .converter-page .converter-content {
   width: 100%;
@@ -375,6 +424,8 @@ input[type='number'] {
 .converter-div {
   text-align: center;
 }
+
+/* --- CONVERTER INPUTS --- */
 
 .converter-inputs {
   display: flex;
@@ -428,6 +479,8 @@ input[type='number'] {
   display: none;
 }
 
+/* --- MEDIA --- */
+
 @media (max-width: 700px) {
   .container {
     width: 90%;
@@ -449,7 +502,7 @@ input[type='number'] {
   .wallet-content .balance__card {
     padding: 15px 15px;
   }
-  .wallet-content .balance__card .balance__info {
+  .wallet-content .balance__info {
     font-size: 20px;
   }
   .wallet-content .summary__total {
@@ -458,14 +511,35 @@ input[type='number'] {
   .wallet-content .summary__diagram {
     width: 100%;
   }
+  .send-modal__content {
+    width: 80%;
+  }
+  .send-modal__title {
+    font-size: 22px;
+  }
+  .send-modal__balance-list {
+    display: block;
+  }
+  .send-modal__balance-list .balance__card {
+    width: 100%;
+    /* margin-bottom: 10px; */
+  }
+  .send-modal__balance-list .balance__info {
+    font-size: 17px;
+  }
+  .send-inputs__input {
+    width: 80%;
+  }
+  .send-inputs .send-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
   .converter-content .history-charts {
     width: 100%;
   }
-
   .converter-inputs {
     margin-bottom: 20px;
   }
-
   .converter-inputs div {
     width: 90%;
   }

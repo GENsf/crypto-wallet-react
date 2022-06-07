@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import BalanceItem from './BalanceItem';
+
 const BalanceList = () => {
 
   const coinList = useSelector((state) => state.wallet);
