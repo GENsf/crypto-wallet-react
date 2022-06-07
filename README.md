@@ -18,6 +18,6 @@
 - Summary info of yours coins
 
 ### Start
-1 Clone repo
-2 npm install
-3 npm start
+1. Clone repo
+2. npm install
+3. npm start
