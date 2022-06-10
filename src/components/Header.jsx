@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <header className='header'>
       <section className="container">
-        <p><Link to='/'>BCS</Link><span>{props.title}</span></p>
+        <p data-testid='logo'><Link to='/'>BCS</Link><span>{props.title}</span></p>
       </section>
     </header>
   );

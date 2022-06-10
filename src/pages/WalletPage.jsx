@@ -17,7 +17,7 @@ const WalletPage = () => {
             <section className="bar">
               <CoinBar coinName={'BTC'}/>
               <CoinBar coinName={'ETH'}/>
-              <Link to='/converter' className='btn btn-main converter'>Converter</Link>
+              <Link to='/converter' className='btn btn-main converter' data-testid="converter-link">Converter</Link>
             </section>
             <BalanceList />
             <SumWallet />

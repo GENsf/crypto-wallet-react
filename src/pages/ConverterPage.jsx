@@ -28,7 +28,7 @@ const ConverterPage = () => {
       <Header title='converter'/>
       <main className="converter-page">
         <section className='container'>
-          <Link to='/' className='btn btn-border'>&larr; Back</Link>
+          <Link to='/' className='btn btn-border' data-testid="wallet-link">&larr; Back</Link>
           <section className='converter-content'>
             <h2>Price Graph (14d)</h2>
             <div className='history-charts'>
